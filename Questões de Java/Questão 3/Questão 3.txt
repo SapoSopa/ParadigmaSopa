@@ -1,0 +1,3 @@
+Por que você utilizou uma interface em SmartDevice? Por que não uma classe ou uma classe abstrata?
+
+Pois com a interface nós podemos definir o padrão que todas as classes de dispositivos devem seguir, os métodos obrigatórios em cada uma e deixando-as livres para ter a sua própria inicialização. Poderiamos ter usado classe abstrata, mas teriamos que definir o atributo comum a elas e definir os métodos que funcionam de igual forma; ja classe não seria possível pois o SmartDevice não representa uma classe em si, mas um padrão entre dispositivos que não possuem funcionamentos completamente iguais.

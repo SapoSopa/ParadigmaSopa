@@ -1,0 +1,3 @@
+enum Ticket {
+    ADULTO, CRIANÇA;
+}
