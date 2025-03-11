@@ -1,21 +1,21 @@
-public class Dragão extends Monstro implements Colorido {
-    private double poderDeAtaqueMax;
+public class Dragão extends Monstro {
+    final double poderDeAtaqueMax;
 
     public Dragão(double vida, double poderDeAtaque, Integer nível) {
-        super(vida, poderDeAtaque, nível);
+        super(vida, poderDeAtaque, nível, "Dragão");
         this.poderDeAtaqueMax = poderDeAtaque * 1.5;
     }
 
     @Override
     public void mordida(Dummy dummy) {
         dummy.estado = "sangramento";
-        this.estado = "atacando";
+        System.out.println("Dragão causou sangramento");
     }
 
     @Override
     public void arranhao(Dummy dummy) {
         dummy.vida -= 50 * this.nível;
-        this.estado = "atacando";
+        System.out.println("Dragão causou " + 50 * this.nível + " de dano");
     }
 
     @Override
@@ -24,7 +24,7 @@ public class Dragão extends Monstro implements Colorido {
         if (this.poderDeAtaque > this.poderDeAtaqueMax) {
             this.poderDeAtaque = this.poderDeAtaqueMax;
         }
-        this.estado = "atacando";
+        System.out.println("Dragão aumentou seu poder de ataque para " + this.poderDeAtaque);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class Dragão extends Monstro implements Colorido {
     @Override
     public void amarelo() {
         this.cor = "amarelo";
-        this.estado = "preparado"/////
+        this.estado = "atacando duas vezes";
     }
 
     @Override

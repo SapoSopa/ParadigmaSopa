@@ -1,21 +1,21 @@
-public class Lobo extends Monstro implements Colorido {
-    private double poderDeAtaqueMax;
+public class Lobo extends Monstro {
+    final double poderDeAtaqueMax;
 
-    public Lobo(double vida, double poderDeAtaque, int nivel) {
-        super(vida, poderDeAtaque, nivel);
+    public Lobo(double vida, double poderDeAtaque, int nível) {
+        super(vida, poderDeAtaque, nível, "Lobo");
         this.poderDeAtaqueMax = 2 * poderDeAtaque;
     }
 
     @Override
     public void mordida(Dummy dummy) {
         dummy.estado = "aterrorizado";
-        this.estado = "atacando";
+        System.out.println("Lobo aterrorizou o dummy");
     }
 
     @Override
     public void arranhao(Dummy dummy) {
         dummy.vida *= 0.8;
-        this.estado = "atacando";
+        System.out.println("Lobo causou " + 20 * this.nível + " de dano");
     }
 
     @Override
@@ -24,61 +24,30 @@ public class Lobo extends Monstro implements Colorido {
         if (this.poderDeAtaque > this.poderDeAtaqueMax) {
             this.poderDeAtaque = this.poderDeAtaqueMax;
         }
-        this.estado = "atacando";
+        System.out.println("Lobo aumentou seu poder de ataque para " + this.poderDeAtaque);
     }
 
     @Override
     public void roxo() {
         this.cor = "roxo";
-        switch (turno) {
-            case 1:
-                monstro.mordida(dummy);
-                break;
-            case 2:
-                monstro.investida(dummy);
-                break;
-            case 3:
-                monstro.arranhao(dummy);
-                break;
-        }
+        this.estado = "sequencia de ataques 3";
     }
 
     @Override
     public void amarelo() {
         this.cor = "amarelo";
-        switch (turno) {
-            case 1:
-                monstro.arranhão(dummy);
-                break;
-            case 2:
-                monstro.arranhão(dummy);
-                break;
-        }
+        this.estado = "sequencia de ataques 2";
     }
 
     @Override
     public void verde() {
         this.cor = "verde";
-        switch (turno) {
-            case 1:
-                monstro.mordida(dummy);
-                break;
-            case 2:
-                monstro.mordida(dummy);
-                break;
-        }
+        this.estado = "sequencia de ataques 1";
     }
 
     @Override
     public void azul() {
         this.cor = "azul";
-        switch (turno) {
-            case 1:
-                monstro.investida(dummy);
-                break;
-            case 2:
-                monstro.investida(dummy);
-                break;
-        }
+        this.estado = "sequencia de ataque";
     }
 }
